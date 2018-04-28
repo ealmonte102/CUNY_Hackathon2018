@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Vocalyze</string>
+    <string name="signUp"><u>Sign Up</u></string>
 </resources>
