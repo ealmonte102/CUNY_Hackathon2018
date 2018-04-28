@@ -1,7 +1,5 @@
 package com.qcconnect.vocalyze.home;
 
-import android.widget.Toast;
-
 import com.qcconnect.vocalyze.model.SelectedUserConvo;
 import com.qcconnect.vocalyze.model.Session;
 import com.qcconnect.vocalyze.repo.MessageRepo;
@@ -67,5 +65,6 @@ public class HomePresenter implements HomeContract.HomePresenter, SessionAdapter
     @Override
     public void openSession(int position) {
         SelectedUserConvo.getInstance().setSelectedSession(sessionList.get(position).userName);
+        view.navigateToConversationPage();
     }
 }

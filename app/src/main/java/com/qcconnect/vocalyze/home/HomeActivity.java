@@ -1,32 +1,50 @@
 package com.qcconnect.vocalyze.home;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ProgressBar;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.qcconnect.vocalyze.R;
-import com.qcconnect.vocalyze.model.Session;
 import com.qcconnect.vocalyze.repo.LocalMessageRepo;
-
-import java.util.List;
-
-import static android.widget.LinearLayout.HORIZONTAL;
+import com.qcconnect.vocalyze.session.ConversationActivity;
 
 public class HomeActivity extends AppCompatActivity implements HomeContract.HomeView {
 
     private RecyclerView sessionRecView;
     private HomePresenter presenter;
     private Button startConvoButton;
+    private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
+            = new BottomNavigationView.OnNavigationItemSelectedListener() {
+
+        @Override
+        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+            switch (item.getItemId()) {
+                case R.id.navigation_home:
+                    return false;
+                case R.id.navigation_discussion:
+                    presenter.goToDiscussionBoard();
+                    return false;
+                case R.id.navigation_profile:
+                    presenter.goToProfile();
+                    return false;
+            }
+            return false;
+        }
+    };
+    private View.OnClickListener buttonConvoClickListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            presenter.connectWithCounselor();
+        }
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,32 +66,6 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.Home
         presenter.onViewAttached(this);
     }
 
-    private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
-            = new BottomNavigationView.OnNavigationItemSelectedListener() {
-
-        @Override
-        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-            switch (item.getItemId()) {
-                case R.id.navigation_home:
-                    return false;
-                case R.id.navigation_discussion:
-                    presenter.goToDiscussionBoard();
-                    return false;
-                case R.id.navigation_profile:
-                    presenter.goToProfile();
-                    return false;
-            }
-            return false;
-        }
-    };
-
-    private View.OnClickListener buttonConvoClickListener = new View.OnClickListener() {
-        @Override
-        public void onClick(View view) {
-            presenter.connectWithCounselor();
-        }
-    };
-
     @Override
     public void navigateToProfile() {
         Toast.makeText(
@@ -93,7 +85,17 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.Home
     }
 
     @Override
+    public void navigateToConversationPage() {
+        startActivity(ConversationActivity.class);
+    }
+
+    @Override
     public void showToastMessage(String message) {
         Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT).show();
+    }
+
+    private void startActivity(Class<?> classname) {
+        Intent intent = new Intent(getApplicationContext(), classname);
+        startActivity(intent);
     }
 }
