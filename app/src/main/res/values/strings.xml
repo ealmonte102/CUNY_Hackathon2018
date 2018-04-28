@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">Vocalyze</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_discussion">Discussion Board</string>
+    <string name="title_profile">Profile</string>
+    <string name="connect_label">Connect With\na Counselor</string>
+    <string name="existing_sessions">Existing Sessions</string>
 </resources>
