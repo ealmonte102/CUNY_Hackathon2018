@@ -8,7 +8,6 @@
     android:paddingTop="56dp"
     android:paddingLeft="60dp"
     android:paddingRight="60dp">
-    >
 
     <EditText
         android:id="@+id/username"
@@ -19,9 +18,8 @@
         android:layout_marginTop="120dp"
         android:hint="Create Username"
         android:textColorHint="@android:color/white"
-        android:textStyleHint="bold"
-        android:backgroundTint="@android:color/white"
-        android:backgroundTintStyle="bold"/>
+        android:textStyle="bold"
+        android:backgroundTint="@android:color/white"/>
 
     <EditText
         android:id="@+id/email"
@@ -31,10 +29,8 @@
         android:layout_marginTop="190dp"
         android:hint="Email"
         android:textColorHint="@android:color/white"
-        android:textStyleHint="bold"
+        android:textStyle="bold"
         android:backgroundTint="@android:color/white"
-        android:backgroundTintSyle="bold"
-
         />
 
     <EditText
@@ -46,9 +42,8 @@
         android:inputType="textPassword"
         android:hint="Password"
         android:textColorHint="@android:color/white"
-        android:textStyleHint="bold"
-        android:backgroundTint="@android:color/white"
-        android:backgroundTintSyle="bold"/>
+        android:textStyle="bold"
+        android:backgroundTint="@android:color/white"/>
 
 
 
