@@ -6,7 +6,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_marginTop="@dimen/activity_vertical_margin"
-    tools:context="com.qcconnect.vocalyze.MainActivity">
+    tools:context="com.qcconnect.vocalyze.home.HomeActivity">
+
+    <ProgressBar
+        android:id="@+id/progressBar_connect"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_centerHorizontal="true"
+        />
 
     <Button
         android:id="@+id/button_start_convo"
@@ -39,6 +47,7 @@
         android:text="@string/existing_sessions" />
 
     <android.support.v7.widget.RecyclerView
+        android:id="@+id/recview_session-list"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@+id/navigation"

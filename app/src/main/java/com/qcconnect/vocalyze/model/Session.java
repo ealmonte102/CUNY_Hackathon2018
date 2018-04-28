@@ -5,9 +5,8 @@ package com.qcconnect.vocalyze.model;
  */
 
 public class Session {
-    private static final String CHAT_PREFIX_TEXT = "Chat with ";
-    private String userName;
-    private String recentMessage;
+    public final String userName;
+    public final String recentMessage;
 
     public Session(String userName, String recentMessage) {
         this.userName = userName;
