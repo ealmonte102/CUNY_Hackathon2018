@@ -6,15 +6,16 @@ import com.qcconnect.vocalyze.base.BasePresenter;
  * Created by evanalmonte on 4/28/18.
  */
 
-public interface SessionContract {
-    interface SessionView {
+public interface ConversationContract {
+    interface View {
+        void refreshData();
         void navigateToProfile();
         void navigateToDiscussionBoard();
         void navigateToCounselorPage();
         void showToastMessage(String message);
     }
 
-    interface HomePresenter extends BasePresenter<SessionView> {
+    interface Presenter extends BasePresenter<View> {
         void reloadSessions();
         void sendMessage(String message);
     }
