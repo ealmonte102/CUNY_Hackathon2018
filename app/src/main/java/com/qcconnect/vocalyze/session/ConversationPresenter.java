@@ -6,7 +6,6 @@ package com.qcconnect.vocalyze.session;
 
 public class ConversationPresenter implements ConversationContract.Presenter {
 
-
     public ConversationPresenter() {
 
     }
