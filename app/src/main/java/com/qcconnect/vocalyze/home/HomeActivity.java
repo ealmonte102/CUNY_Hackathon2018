@@ -91,4 +91,9 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.Home
         Toast.makeText(
                 getApplicationContext(), "Navigate To Counselor Page not implemented.", Toast.LENGTH_SHORT).show();
     }
+
+    @Override
+    public void showToastMessage(String message) {
+        Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT).show();
+    }
 }

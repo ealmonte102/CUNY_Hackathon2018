@@ -14,6 +14,7 @@ public interface HomeContract {
         void navigateToProfile();
         void navigateToDiscussionBoard();
         void navigateToCounselorPage();
+        void showToastMessage(String message);
     }
 
     interface HomePresenter extends BasePresenter<HomeView> {

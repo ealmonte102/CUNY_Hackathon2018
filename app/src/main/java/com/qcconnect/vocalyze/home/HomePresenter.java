@@ -1,5 +1,7 @@
 package com.qcconnect.vocalyze.home;
 
+import android.widget.Toast;
+
 import com.qcconnect.vocalyze.model.Session;
 import com.qcconnect.vocalyze.repo.MessageRepo;
 
@@ -59,5 +61,10 @@ public class HomePresenter implements HomeContract.HomePresenter, SessionAdapter
         Session session = sessionList.get(position);
         rowView.setRecentChatText(session.recentMessage);
         rowView.setUserText(session.userName);
+    }
+
+    @Override
+    public void openSession(int position) {
+        view.showToastMessage("Showing messages from " + sessionList.get(position).userName);
     }
 }

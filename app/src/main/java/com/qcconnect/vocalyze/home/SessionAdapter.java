@@ -43,6 +43,12 @@ public class SessionAdapter extends RecyclerView.Adapter<SessionAdapter.SessionV
 
         public SessionViewHolder(View itemView) {
             super(itemView);
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    presenter.openSession(getLayoutPosition());
+                }
+            });
             userText = itemView.findViewById(R.id.text_session_user);
             lastResponseText = itemView.findViewById(R.id.text_last_response_text);
         }
@@ -63,6 +69,7 @@ public class SessionAdapter extends RecyclerView.Adapter<SessionAdapter.SessionV
 
         void onBindSessionRowViewAtPosition(int position, SessionViewHolder rowView);
 
+        void openSession(int position);
     }
 
     public interface SessionRowView {
