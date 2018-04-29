@@ -3,6 +3,8 @@ package com.qcconnect.vocalyze;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.*;
+import android.content.ContentValues;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -12,13 +14,22 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.qcconnect.vocalyze.session.MyDatabaseHelper;
+
 /**
  * Created by RJ on 4/28/2018.
  */
 
 public class SignupActivity extends AppCompatActivity
 {
-    SQLiteDatabase userDB;
+    private MyDatabaseHelper dbHelper;
+    private SQLiteDatabase userDB;
+
+    public final static String USER_TABLE = "MyUsers";
+
+    public static String USER_EMAIL;
+    public static String USER_NAME;
+    public static String USER_PASSWORD;
 
     private static final String TAG = "SignupActivity";
 
@@ -33,14 +44,13 @@ public class SignupActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
 
+        dbHelper = new MyDatabaseHelper(this);
+        userDB = dbHelper.getWritableDatabase();
+
         signup_button=findViewById(R.id.btn_signup);
         username = findViewById(R.id.username);
         email = findViewById(R.id.email);
         password = findViewById(R.id.password);
-
-        userDB = this.openOrCreateDatabase("userDB",MODE_PRIVATE,null);
-
-        userDB.execSQL("CREATE TABLE IF NOT EXISTS users (email VARCHAR PRIMARY KEY, username VARCHAR, pass INTEGER)");
 
         signup_button.setOnClickListener(new View.OnClickListener()
         {
@@ -110,8 +120,13 @@ public class SignupActivity extends AppCompatActivity
         return true;
     }
 
-    public void insertUser(String user_email, String user_name, int user_pass)
+    public long insertUser(String user_email, String user_name, int user_pass)
     {
-        userDB.execSQL("INSERT INTO users (email, username, password) VALUES ('"+user_email+"', '"+user_name+"', '"+user_pass+"')");
+        ContentValues values = new ContentValues();
+        values.put(USER_EMAIL, user_email);
+        values.put(USER_NAME, user_name);
+        values.put(USER_PASSWORD, user_pass);
+        return userDB.insert(USER_TABLE, null, values);
+
     }
 }
