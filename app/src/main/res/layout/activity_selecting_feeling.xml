@@ -16,9 +16,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="0dp"
         android:text="@string/How_you_doing"
-        android:textColor="#ffffff "
-        />
-
+        android:textColor="@android:color/white"/>
 
 
     <ListView

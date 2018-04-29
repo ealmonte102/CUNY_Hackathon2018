@@ -5,8 +5,9 @@
 
     <TextView
         android:id="@+id/emotion_listitem"
-        android:textColor="#fffff"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="10dp"/>
+        android:gravity="center"
+        android:padding="10dp"
+        android:textColor="@android:color/white" />
 </LinearLayout>

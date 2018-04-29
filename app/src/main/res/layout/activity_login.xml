@@ -8,6 +8,17 @@
     android:background="@drawable/app_background"
     android:id="@+id/relativeLayout">
 
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="132dp"
+        android:src="@drawable/logo_orange"
+        app:layout_constraintBottom_toTopOf="@+id/username"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
 
     <EditText
         android:id="@+id/username"
@@ -40,7 +51,7 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="276dp"
+        android:layout_marginTop="280dp"
         android:backgroundTint="@android:color/white"
         android:drawableLeft="@drawable/ic_vpn_key_white_24dp"
         android:drawablePadding="15dp"

@@ -24,13 +24,15 @@ public class LoginActivity extends AppCompatActivity {
 
         signIn = (Button) findViewById(R.id.signIn);
         signUp = (TextView) findViewById(R.id.signUp);
-//        signIn.setOnClickListener(new View.OnClickListener()
-//        {
-//            public void onClick(View v)
-//            {
-//                Intent selectFeelingIntent = new Intent(this, SelectingFeeling.class);
-//                startActivity(selectFeelingIntent);
-//        });
+
+        signIn.setOnClickListener(new View.OnClickListener()
+        {
+            public void onClick(View v)
+            {
+                Intent selectFeelingIntent = new Intent(LoginActivity.this, SelectingFeeling.class);
+                startActivity(selectFeelingIntent);
+            }
+        });
         signUp.setOnClickListener(new View.OnClickListener()
         {
             public void onClick(View v)

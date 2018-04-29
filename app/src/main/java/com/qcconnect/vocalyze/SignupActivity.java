@@ -1,6 +1,6 @@
 package com.qcconnect.vocalyze;
 
-    import android.app.ProgressDialog;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
