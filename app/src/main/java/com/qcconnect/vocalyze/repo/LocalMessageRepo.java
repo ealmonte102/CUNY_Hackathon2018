@@ -4,6 +4,7 @@ import com.qcconnect.vocalyze.model.Message;
 import com.qcconnect.vocalyze.model.Session;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
@@ -14,9 +15,10 @@ import java.util.List;
  */
 
 public class LocalMessageRepo implements MessageRepo {
+    private static final LocalMessageRepo ourInstance = new LocalMessageRepo();
     HashMap<String, List<Message>> messages = new HashMap<>();
 
-    public LocalMessageRepo() {
+    private LocalMessageRepo() {
         List<Message> messageList1 = new ArrayList<>();
         List<Message> messageList2 = new ArrayList<>();
         List<Message> messageList3 = new ArrayList<>();
@@ -44,7 +46,10 @@ public class LocalMessageRepo implements MessageRepo {
         messages.put("Dr. Kathleen Tanne", messageList2);
         messages.put("Dr. Jeff Heffley", messageList3);
         messages.put("Dr. Carlos M.", messageList4);
+    }
 
+    public static LocalMessageRepo getInstance() {
+        return ourInstance;
     }
 
     public static Date getDate(int month, int day, int year) {
@@ -68,5 +73,12 @@ public class LocalMessageRepo implements MessageRepo {
     @Override
     public List<Message> getMessageForUser(String username) {
         return messages.get(username);
+    }
+
+    @Override
+    public void addNewChat(Message message) {
+        if (!messages.containsKey(message.sender)) {
+            messages.put(message.sender, Arrays.asList(message));
+        }
     }
 }

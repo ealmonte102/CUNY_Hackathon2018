@@ -1,5 +1,7 @@
 package com.qcconnect.vocalyze.session;
 
+import android.util.Log;
+
 import com.qcconnect.vocalyze.model.Message;
 import com.qcconnect.vocalyze.model.SelectedUserConvo;
 import com.qcconnect.vocalyze.repo.MessageRepo;
@@ -23,6 +25,8 @@ public class ConversationPresenter implements ConversationContract.Presenter, Co
 
     public ConversationPresenter(MessageRepo repo) {
         this.repo = repo;
+        reloadSessions();
+        Log.d("ConversationPresenter", String.valueOf(repo.getMessageForUser(SelectedUserConvo.getInstance().getSelectedSession())));
     }
 
     @Override

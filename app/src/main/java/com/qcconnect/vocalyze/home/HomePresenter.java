@@ -1,5 +1,6 @@
 package com.qcconnect.vocalyze.home;
 
+import com.qcconnect.vocalyze.model.CounselSessionStarter;
 import com.qcconnect.vocalyze.model.SelectedUserConvo;
 import com.qcconnect.vocalyze.model.Session;
 import com.qcconnect.vocalyze.repo.MessageRepo;
@@ -11,12 +12,14 @@ import java.util.List;
  */
 
 public class HomePresenter implements HomeContract.HomePresenter, SessionAdapter.SessionListPresenter {
-    HomeContract.HomeView view;
-    MessageRepo retriever;
+    private HomeContract.HomeView view;
+    private MessageRepo retriever;
     private List<Session> sessionList;
+    private CounselSessionStarter sessionStarter;
 
-    public HomePresenter(MessageRepo retriever) {
+    public HomePresenter(MessageRepo retriever, CounselSessionStarter sessionStarter) {
         this.retriever = retriever;
+        this.sessionStarter = sessionStarter;
         sessionList = retriever.getAllSessions();
     }
 
@@ -37,7 +40,9 @@ public class HomePresenter implements HomeContract.HomePresenter, SessionAdapter
 
     @Override
     public void connectWithCounselor() {
-        view.navigateToCounselorPage();
+        if (sessionStarter.startSession()) {
+            view.navigateToCounselorPage();
+        }
     }
 
     @Override

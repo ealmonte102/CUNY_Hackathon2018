@@ -37,7 +37,7 @@ public class ConversationActivity extends AppCompatActivity implements Conversat
         messageRecyclerView = findViewById(R.id.reyclerview_messages);
         sendButton = findViewById(R.id.button_chatbox_send);
         sendChatBoxText = findViewById(R.id.edittext_chatbox);
-        ConversationPresenter presenter = new ConversationPresenter(new LocalMessageRepo());
+        ConversationPresenter presenter = new ConversationPresenter(LocalMessageRepo.getInstance());
         this.presenter = presenter;
         adapter = new ConversationAdapter(presenter);
         messageRecyclerView.setAdapter(adapter);

@@ -13,6 +13,7 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.qcconnect.vocalyze.R;
+import com.qcconnect.vocalyze.model.TestSessionStarter;
 import com.qcconnect.vocalyze.repo.LocalMessageRepo;
 import com.qcconnect.vocalyze.session.ConversationActivity;
 
@@ -51,7 +52,8 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.Home
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         startConvoButton = findViewById(R.id.button_start_convo);
-        presenter = new HomePresenter(new LocalMessageRepo());
+        LocalMessageRepo messageRepo = LocalMessageRepo.getInstance();
+        presenter = new HomePresenter(messageRepo, new TestSessionStarter(messageRepo));
         sessionRecView = findViewById(R.id.recview_session_list);
         sessionRecView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
         sessionRecView.setAdapter(new SessionAdapter(presenter));
@@ -80,8 +82,7 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.Home
 
     @Override
     public void navigateToCounselorPage() {
-        Toast.makeText(
-                getApplicationContext(), "Navigate To Counselor Page not implemented.", Toast.LENGTH_SHORT).show();
+        navigateToConversationPage();
     }
 
     @Override
