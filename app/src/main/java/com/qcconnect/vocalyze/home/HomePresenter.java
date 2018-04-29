@@ -26,6 +26,7 @@ public class HomePresenter implements HomeContract.HomePresenter, SessionAdapter
     @Override
     public void onViewAttached(HomeContract.HomeView view) {
         this.view = view;
+        reloadSessions();
     }
 
     @Override
@@ -36,6 +37,7 @@ public class HomePresenter implements HomeContract.HomePresenter, SessionAdapter
     @Override
     public void reloadSessions() {
         sessionList = retriever.getAllSessions();
+        view.reloadList();
     }
 
     @Override

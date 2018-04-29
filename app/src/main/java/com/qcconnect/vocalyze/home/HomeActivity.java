@@ -22,6 +22,7 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.Home
     private RecyclerView sessionRecView;
     private HomePresenter presenter;
     private Button startConvoButton;
+    private SessionAdapter sessionAdapter;
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
 
@@ -56,7 +57,8 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.Home
         presenter = new HomePresenter(messageRepo, new TestSessionStarter(messageRepo));
         sessionRecView = findViewById(R.id.recview_session_list);
         sessionRecView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
-        sessionRecView.setAdapter(new SessionAdapter(presenter));
+        sessionAdapter = new SessionAdapter(presenter);
+        sessionRecView.setAdapter(sessionAdapter);
         startConvoButton.setOnClickListener(buttonConvoClickListener);
         BottomNavigationView navigation = findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
@@ -88,6 +90,11 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.Home
     @Override
     public void navigateToConversationPage() {
         startActivity(ConversationActivity.class);
+    }
+
+    @Override
+    public void reloadList() {
+        sessionAdapter.notifyDataSetChanged();
     }
 
     @Override
