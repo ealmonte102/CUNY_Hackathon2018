@@ -8,8 +8,8 @@ import java.util.Date;
 
 public class Message {
     public final String messageText;
-    private final Date messageDate;
     public final String sender;
+    private final Date messageDate;
 
     public Message( String sender, String messageText, Date messageDate) {
         this.messageDate = messageDate;
@@ -17,7 +17,11 @@ public class Message {
         this.sender = sender;
     }
 
-    public String getDate() {
-        return messageDate.toString();
+    public long getDate() {
+        return messageDate.getTime();
+    }
+
+    public String toString() {
+        return sender + ": " + messageText + " | " + messageDate;
     }
 }
