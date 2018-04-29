@@ -55,7 +55,7 @@ public class SignupActivity extends AppCompatActivity
         Log.i(TAG, "Signup");
 
         if(valid() == false) {
-            Toast message = Toast.makeText(getBaseContext(), "Illegal key entered",Toast.LENGTH_SHORT);
+            Toast message = Toast.makeText(getBaseContext(), "Invalid",Toast.LENGTH_SHORT);
             message.show();
             return;
         }
