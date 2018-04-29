@@ -12,4 +12,6 @@ import java.util.List;
 public interface MessageRepo {
     List<Session> getAllSessions();
     List<Message> getMessageForUser(String username);
+
+    void addNewChat(Message message);
 }

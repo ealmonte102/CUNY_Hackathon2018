@@ -13,6 +13,8 @@ public interface HomeContract {
         void navigateToCounselorPage();
 
         void navigateToConversationPage();
+
+        void reloadList();
         void showToastMessage(String message);
     }
 

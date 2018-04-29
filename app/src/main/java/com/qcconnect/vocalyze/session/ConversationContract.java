@@ -8,7 +8,6 @@ import com.qcconnect.vocalyze.base.BasePresenter;
 
 public interface ConversationContract {
     interface View {
-        void refreshData();
         void navigateToProfile();
         void navigateToDiscussionBoard();
         void navigateToCounselorPage();
