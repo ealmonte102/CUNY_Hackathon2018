@@ -19,7 +19,7 @@
         android:textColor="@android:color/white"/>
 
 
-    <ListView
+    <android.support.v7.widget.RecyclerView
 
         android:id="@+id/emotion_list"
         android:layout_width="match_parent"
@@ -30,6 +30,6 @@
         android:layout_centerHorizontal="true">
 
 
-    </ListView>
+    </android.support.v7.widget.RecyclerView>
 
 </RelativeLayout>
