@@ -1,8 +1,10 @@
 package com.qcconnect.vocalyze;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -20,8 +22,8 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-//        signIn = (Button) findViewById(R.id.signIn);
-//        signUp = (TextView) findViewById(R.id.signUp);
+        signIn = (Button) findViewById(R.id.signIn);
+        signUp = (TextView) findViewById(R.id.signUp);
 //        signIn.setOnClickListener(new View.OnClickListener()
 //        {
 //            public void onClick(View v)
@@ -29,15 +31,14 @@ public class LoginActivity extends AppCompatActivity {
 //                Intent selectFeelingIntent = new Intent(this, SelectingFeeling.class);
 //                startActivity(selectFeelingIntent);
 //        });
-//        signUp.setOnClickListener(new View.OnClickListener()
-//        {
-//            public void onClick(View v)
-//            {
-//                Intent signUpIntent = new Intent(this, SingupActivity.class);
-//                startActivity(signUpIntent);
-//            }
-//        });
-
+        signUp.setOnClickListener(new View.OnClickListener()
+        {
+            public void onClick(View v)
+            {
+                Intent signUpIntent = new Intent(LoginActivity.this, SignupActivity.class);
+                startActivity(signUpIntent);
+            }
+        });
 
     }
 
