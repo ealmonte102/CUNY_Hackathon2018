@@ -36,7 +36,7 @@ public class MyDatabaseHelper extends SQLiteOpenHelper
         Log.w(MyDatabaseHelper.class.getName(),
                 "Upgrading database from version " + oldVersion + " to "
                         + newVersion + ", which will destroy all old data");
-        database.execSQL("DROP TABLE IF EXISTS MYusers");
+        database.execSQL("DROP TABLE IF EXISTS VocalizeDB");
         onCreate(database);
     }
 }
