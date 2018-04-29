@@ -1,6 +1,9 @@
 package com.qcconnect.vocalyze;
 
+    import android.database.Cursor;
+    import android.database.sqlite.SQLiteDatabase;
 
+    import android.content.Intent;
     import android.util.*;
 
     import android.app.ProgressDialog;
@@ -21,6 +24,8 @@ package com.qcconnect.vocalyze;
 
 public class SignupActivity extends AppCompatActivity
 {
+    SQLiteDatabase userDB;
+
     private static final String TAG = "SignupActivity";
 
     private Button signup_button;
@@ -33,6 +38,15 @@ public class SignupActivity extends AppCompatActivity
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
+
+        signup_button=findViewById(R.id.btn_signup);
+        username = findViewById(R.id.username);
+        email = findViewById(R.id.email);
+        password = findViewById(R.id.password);
+
+        userDB = this.openOrCreateDatabase("userDB",MODE_PRIVATE,null);
+
+        userDB.execSQL("CREATE TABLE IF NOT EXISTS lists (user_ID INTEGER PRIMARY KEY AUTOINCREMENT, username VARCHAR, email VARCHAR, )");
 
         signup_button.setOnClickListener(new View.OnClickListener()
         {
@@ -61,34 +75,41 @@ public class SignupActivity extends AppCompatActivity
             progressDialog.show();
 
 
+            new android.os.Handler().postDelayed(
+                    new Runnable()
+                    {
+                        public void run()
+                        {
+                            onSignupSuccess();
+                            progressDialog.dismiss();
+                            Intent login = new Intent(getApplicationContext(), LoginActivity.class);
+                            startActivity(login);
+                            finish();
+                        }
+                    }, 3000);
         }
 
     }
 
+    public void onSignupSuccess()
+    {
+        signup_button.setEnabled(true);
+        setResult(RESULT_OK, null);
+    }
 
     public boolean valid()
     {
-        boolean valid = false;
-
-        if(!username.getText().toString().matches(user_regex) || username.getText().toString().isEmpty()) {
+        if (!username.getText().toString().matches(user_regex) || username.getText().toString().isEmpty()) {
             username.setError("Username must be between 8 - 20 characters!");
-            return valid;
-        }
-        if(!Patterns.EMAIL_ADDRESS.matcher(email.getText().toString()).matches() || email.getText().toString().isEmpty() ){
+            return false;
+        } else if (!Patterns.EMAIL_ADDRESS.matcher(email.getText().toString()).matches() || email.getText().toString().isEmpty()) {
             email.setError("Email is not invalid!");
-            return valid;
-        }
-        if(password.getText().toString().isEmpty() || password.getText().toString().length() < 8){
+            return false;
+        } else if (password.getText().toString().isEmpty() || password.getText().toString().length() < 8) {
             password.setError("Password must be greater than 4 characters");
-            return valid;
+            return false;
         }
 
-        valid = true;
-        return valid;
+        return true;
     }
-
-
-
-
-
 }
