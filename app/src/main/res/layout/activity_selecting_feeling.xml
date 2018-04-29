@@ -15,11 +15,14 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="0dp"
-        android:text="@string/How_you_doing" />
+        android:text="@string/How_you_doing"
+        android:textColor="#ffffff "
+        />
 
 
 
     <ListView
+
         android:id="@+id/emotion_list"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -27,6 +30,7 @@
         android:layout_alignParentStart="true"
         android:layout_below="@id/feeling_question"
         android:layout_centerHorizontal="true">
+
 
     </ListView>
 

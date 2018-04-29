@@ -46,7 +46,7 @@ public class SignupActivity extends AppCompatActivity
 
         userDB = this.openOrCreateDatabase("userDB",MODE_PRIVATE,null);
 
-        userDB.execSQL("CREATE TABLE IF NOT EXISTS lists (user_ID INTEGER PRIMARY KEY AUTOINCREMENT, username VARCHAR, email VARCHAR, )");
+        userDB.execSQL("CREATE TABLE IF NOT EXISTS lists (user_ID INTEGER PRIMARY KEY AUTOINCREMENT, username VARCHAR, email VARCHAR)");
 
         signup_button.setOnClickListener(new View.OnClickListener()
         {
