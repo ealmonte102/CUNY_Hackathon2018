@@ -1,22 +1,16 @@
 package com.qcconnect.vocalyze;
 
-    import android.database.Cursor;
-    import android.database.sqlite.SQLiteDatabase;
-
-    import android.content.Intent;
-    import android.util.*;
-
     import android.app.ProgressDialog;
-    import android.util.Log;
-
-    import android.os.Bundle;
-    import android.support.v7.app.AppCompatActivity;
-
-    import android.view.View;
-    import android.widget.Button;
-    import android.widget.EditText;
-
-    import android.widget.Toast;
+import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
+import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
+import android.util.Patterns;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
 
 /**
  * Created by RJ on 4/28/2018.
