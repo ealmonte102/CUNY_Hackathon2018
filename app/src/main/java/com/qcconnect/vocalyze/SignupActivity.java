@@ -40,7 +40,7 @@ public class SignupActivity extends AppCompatActivity
 
         userDB = this.openOrCreateDatabase("userDB",MODE_PRIVATE,null);
 
-        userDB.execSQL("CREATE TABLE IF NOT EXISTS lists (user_ID INTEGER PRIMARY KEY AUTOINCREMENT, username VARCHAR, email VARCHAR)");
+        userDB.execSQL("CREATE TABLE IF NOT EXISTS users (email VARCHAR PRIMARY KEY, username VARCHAR, pass INTEGER)");
 
         signup_button.setOnClickListener(new View.OnClickListener()
         {
@@ -75,7 +75,9 @@ public class SignupActivity extends AppCompatActivity
                         public void run()
                         {
                             onSignupSuccess();
+                            insertUser(email.getText().toString(), username.getText().toString(), password.getText().toString().hashCode());
                             progressDialog.dismiss();
+
                             Intent login = new Intent(getApplicationContext(), LoginActivity.class);
                             startActivity(login);
                             finish();
@@ -104,6 +106,12 @@ public class SignupActivity extends AppCompatActivity
             return false;
         }
 
+
         return true;
+    }
+
+    public void insertUser(String user_email, String user_name, int user_pass)
+    {
+        userDB.execSQL("INSERT INTO users (email, username, password) VALUES ('"+user_email+"', '"+user_name+"', '"+user_pass+"')");
     }
 }
