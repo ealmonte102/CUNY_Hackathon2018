@@ -24,6 +24,7 @@ public class LoginActivity extends AppCompatActivity {
 
         signIn = (Button) findViewById(R.id.signIn);
         signUp = (TextView) findViewById(R.id.signUp);
+
 //        signIn.setOnClickListener(new View.OnClickListener()
 //        {
 //            public void onClick(View v)
@@ -31,6 +32,7 @@ public class LoginActivity extends AppCompatActivity {
 //                Intent selectFeelingIntent = new Intent(this, SelectingFeeling.class);
 //                startActivity(selectFeelingIntent);
 //        });
+
         signUp.setOnClickListener(new View.OnClickListener()
         {
             public void onClick(View v)
@@ -39,6 +41,11 @@ public class LoginActivity extends AppCompatActivity {
                 startActivity(signUpIntent);
             }
         });
+
+
+
+
+
 
     }
 
