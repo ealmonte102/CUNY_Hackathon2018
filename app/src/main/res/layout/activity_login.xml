@@ -21,7 +21,7 @@
 
 
     <EditText
-        android:id="@+id/username"
+        android:id="@+id/email"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
@@ -32,7 +32,7 @@
         android:drawablePadding="15dp"
         android:ems="10"
         android:gravity="center_vertical"
-        android:hint="Username"
+        android:hint="Email"
         android:inputType="text"
         android:textColor="@android:color/white"
         android:textColorHint="@android:color/white"
